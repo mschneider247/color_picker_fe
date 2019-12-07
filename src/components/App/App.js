@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import Welcome from '../Welcome/Welcome';
 
-export class App extends Component {
+class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -12,11 +13,11 @@ export class App extends Component {
 
   render() {
     return (
-      <p>This is Color_Picker_FE</p>
+      <section>
+        <Welcome />
+      </section>
     );
-  }
-
-
+  };
 }
 
 export default App;
