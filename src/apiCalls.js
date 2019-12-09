@@ -10,6 +10,12 @@ export const fetchAllPalettes = async () => {
 	return data;
 };
 
+export const fetchProject = async (id) => {
+	const response = await fetch(`https://color-picker-be.herokuapp.com/api/v1/projects/${id}`);
+	const data = await response.json();
+	return data;
+};
+
 export const fetchPalette = async (id) => {
 	const response = await fetch(`https://color-picker-be.herokuapp.com/api/v1/palettes/${id}`);
 	const data = await response.json();
