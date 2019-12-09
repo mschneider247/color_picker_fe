@@ -21,3 +21,57 @@ export const fetchPalette = async (id) => {
 	const data = await response.json();
 	return data;
 };
+
+export const addProject = async (info) => {
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(info),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  const resp = await fetch('https://color-picker-be.herokuapp.com/api/v1/projects', options)
+  const data = await resp.json();
+  return data
+};
+
+export const addPalette = async (info) => {
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(info),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  const resp = await fetch('https://color-picker-be.herokuapp.com/api/v1/palettes', options)
+  const data = await resp.json();
+  return data
+};
+
+export const deleteProject = async (id) => {
+  const options = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  const resp =  await fetch(`https://color-picker-be.herokuapp.com/api/v1/projects/${id}`, options);
+  const data = await resp.json();
+  return data
+};
+
+export const deletePalette = async (id) => {
+  const options = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  const resp =  await fetch(`https://color-picker-be.herokuapp.com/api/v1/palettes/${id}`, options);
+  const data = await resp.json();
+  return data
+};

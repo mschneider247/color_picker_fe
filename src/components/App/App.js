@@ -9,6 +9,15 @@ class App extends Component {
     this.state = {
       projects: [],
       palettes: [],
+      projectName: '',
+      paletteName: '',
+      projectId: 0,
+      id: 0,
+      color1: '',
+      color2: '',
+      color3: '',
+      color4: '',
+      color5: ''
     }
   }
 
@@ -16,13 +25,10 @@ class App extends Component {
     fetchAllProjects()
       .then(projects => this.setState({ projects }))
       .catch(error => console.log(error))
-  }
 
-  getPalettes = (e) => {
     fetchAllPalettes()
-      .then(palettes => {
-        return palettes.filter(palette => palette.projectId.includes(e.target.value))
-      })
+      .then(palettes => this.setState({ palettes }))
+      .catch(error => console.log(error))
   }
 
   render() {
