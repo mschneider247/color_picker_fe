@@ -18,6 +18,12 @@ class App extends Component {
       .catch(error => console.log(error))
   }
 
+  getPalettes = (e) => {
+    fetchAllPalettes()
+      .then(palettes => {
+        return palettes.filter(palette => palette.projectId.includes(e.target.value))
+      })
+  }
 
   render() {
     return (
