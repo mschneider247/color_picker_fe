@@ -62,7 +62,6 @@ class App extends Component {
       <section>
         <Welcome />
         <Projects projects={displayProjects} />
-        {/* {displayProjects} */}
         {paletteName}
         <button onClick={this.randomizeColors}>Randomize Palette</button>
       </section>
