@@ -1,0 +1,8 @@
+#Section_PaletteContainer {
+  display: flex;
+}
+
+.colorBox {
+  width: 15%;
+  height: 200px;
+}

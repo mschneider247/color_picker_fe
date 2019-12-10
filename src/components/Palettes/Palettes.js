@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 
-class Projects extends Component {
+class Palettes extends Component {
   constructor() {
     super();
     this.state = {
-      currentProject: {}
+      currentPalette: {}
     }
   }
 
   render () {
     return(
       <section>
-        <p>{this.props.projects}</p>
+        <p>{this.props.palettes}</p>
       </section>
     )
   }
 };
 
-export default Projects;
+export default Palettes;
