@@ -33,17 +33,21 @@ class App extends Component {
 
   updatePalettes = (e) => {
     this.setState({ projectName: e.target.innerText });
+    this.setState({ projectId: parseInt(e.target.value) });
   }
 
 
   render() {
+    const displayPalettes = this.state.palettes.filter(palette => palette.projectId === this.state.projectId)
+    const paletteName = displayPalettes.map(palette => palette.name)
     const displayProjects = this.state.projects.map(project => {
-        return (<div onClick={(e) => this.updatePalettes(e)}>{project.name}</div>)
+        return (<button value={project.projectId} onClick={(e) => this.updatePalettes(e)}>{project.name}</button>)
       })
     return (
       <section>
         <Welcome />
         {displayProjects}
+        {paletteName}
       </section>
     );
   };
