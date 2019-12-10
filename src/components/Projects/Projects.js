@@ -11,7 +11,7 @@ class Projects extends Component {
   render () {
     return(
       <section>
-        <p>Projects!</p>
+        <p>{this.props.projects}</p>
       </section>
     )
   }

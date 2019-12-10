@@ -4,8 +4,8 @@ import './Welcome.css';
 const Welcome = (props) => {
   
   return (
-    <section>
-      <h2>Welcome to Color_Picker!</h2>
+    <section id="welcome">
+      <h2 id="welcomeTitle">Welcome to Color_Picker!</h2>
     </section>
   )
 }
