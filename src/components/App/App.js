@@ -31,17 +31,19 @@ class App extends Component {
       .catch(error => console.log(error))
   }
 
+  updatePalettes = (e) => {
+    this.setState({ projectName: e.target.innerText });
+  }
+
 
   render() {
     const displayProjects = this.state.projects.map(project => {
-        return (<p>{project.name}</p>)
+        return (<div onClick={(e) => this.updatePalettes(e)}>{project.name}</div>)
       })
     return (
       <section>
         <Welcome />
-        <section>
         {displayProjects}
-        </section>
       </section>
     );
   };
