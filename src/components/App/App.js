@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Welcome from '../Welcome/Welcome';
+import Projects from '../Projects/Projects'
 import { fetchAllProjects, fetchAllPalettes } from '../../apiCalls';
 
 class App extends Component {
@@ -36,7 +37,6 @@ class App extends Component {
     this.setState({ projectId: parseInt(e.target.value) });
   }
 
-
   render() {
     const displayPalettes = this.state.palettes.filter(palette => palette.projectId === this.state.projectId)
     const paletteName = displayPalettes.map(palette => palette.name)
@@ -46,7 +46,8 @@ class App extends Component {
     return (
       <section>
         <Welcome />
-        {displayProjects}
+        <Projects projects={displayProjects} />
+        {/* {displayProjects} */}
         {paletteName}
       </section>
     );
