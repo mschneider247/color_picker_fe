@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Welcome from '../Welcome/Welcome';
+import Projects from '../Projects/Projects'
 import { fetchAllProjects, fetchAllPalettes } from '../../apiCalls';
 
 class App extends Component {
@@ -60,7 +61,8 @@ class App extends Component {
     return (
       <section>
         <Welcome />
-        {displayProjects}
+        <Projects projects={displayProjects} />
+        {/* {displayProjects} */}
         {paletteName}
         <button onClick={this.randomizeColors}>Randomize Palette</button>
       </section>
