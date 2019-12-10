@@ -70,7 +70,7 @@ class App extends Component {
       })
     const { color1, color2, color3, color4, color5} = this.state;
     return (
-      <section>
+      <section id="app">
         <Welcome />
         <Projects projects={displayProjects} />
         <Palettes palettes={paletteName} />
