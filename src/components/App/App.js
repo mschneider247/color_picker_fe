@@ -41,6 +41,13 @@ class App extends Component {
     this.setState({ paletteId: parseInt(e.target.value) });
   }
 
+  randomizeColors = () => {
+    this.setState({ color1: '#'+(Math.random()*0xFFFFFF<<0).toString(16) });
+    this.setState({ color2: '#'+(Math.random()*0xFFFFFF<<0).toString(16) });
+    this.setState({ color3: '#'+(Math.random()*0xFFFFFF<<0).toString(16) });
+    this.setState({ color4: '#'+(Math.random()*0xFFFFFF<<0).toString(16) });
+    this.setState({ color5: '#'+(Math.random()*0xFFFFFF<<0).toString(16) });
+  }
 
   render() {
     const displayPalettes = this.state.palettes.filter(palette => palette.projectId === this.state.projectId)
@@ -55,6 +62,7 @@ class App extends Component {
         <Welcome />
         {displayProjects}
         {paletteName}
+        <button onClick={this.randomizeColors}>Randomize Palette</button>
       </section>
     );
   };
