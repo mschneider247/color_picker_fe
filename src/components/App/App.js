@@ -31,10 +31,17 @@ class App extends Component {
       .catch(error => console.log(error))
   }
 
+
   render() {
+    const displayProjects = this.state.projects.map(project => {
+        return (<p>{project.name}</p>)
+      })
     return (
       <section>
         <Welcome />
+        <section>
+        {displayProjects}
+        </section>
       </section>
     );
   };
