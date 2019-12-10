@@ -15,7 +15,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --verbose",
+    "test": "react-scripts test --forceExit",
+    "test:watch": "react-scripts test --verbose",
     "eject": "react-scripts eject"
   },
   "browserslist": {
