@@ -191,3 +191,177 @@ describe('fetchPalette', () => {
     expect(fetchPalette(mockId)).rejects.toEqual(Error('Failed to fetch'));
     });
 });
+
+describe('addProject', () => {
+	let mockProject;
+	let mockId = { id: 4 };
+
+	beforeEach(() => {
+    mockProject = {
+	    projectId: 55,
+	    name: 'Testing Project'
+  	};
+
+    window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockId)
+        })
+      })
+    })
+
+	it('should fetch correct arguments', () => {
+    const expected = [ 'https://color-picker-be.herokuapp.com/api/v1/projects',{
+      method: 'POST',
+      body: JSON.stringify(mockProject),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }];
+    addProject(mockProject);
+
+    expect(window.fetch).toHaveBeenCalledWith(...expected);
+  });
+
+  it('should return the new project id (Happy Path)', () => {
+    addProject().then(results => expect(results).toEqual(mockId))
+  });
+
+  it('should return an error if response is not ok (Sad Path)', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+          ok: false
+      });
+    })
+    expect(addProject(mockProject)).rejects.toEqual(TypeError('resp.json is not a function'))
+  });
+});
+
+describe('addPalette', () => {
+	let mockPalette;
+	let mockId = { id: 5 };
+
+	beforeEach(() => {
+    mockPalette = {
+	    projectId: 1,
+	    name: 'test palette',
+	    color1: '#668B8B',
+	    color2: '#B4CDCD',
+	    color3: '#2F4F4F',
+	    color4: '#7A8B8B',
+	    color5: '#838B8B',
+  	};
+
+    window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockId)
+        })
+      })
+    })
+
+	it('should fetch correct arguments', () => {
+    const expected = [ 'https://color-picker-be.herokuapp.com/api/v1/palettes',{
+      method: 'POST',
+      body: JSON.stringify(mockPalette),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }];
+    addPalette(mockPalette);
+
+    expect(window.fetch).toHaveBeenCalledWith(...expected);
+  });
+
+  it('should return the new palette id (Happy Path)', () => {
+    addPalette().then(results => expect(results).toEqual(mockId))
+  });
+
+  it('should return an error if response is not ok (Sad Path)', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+          ok: false
+      });
+    })
+    expect(addPalette(mockPalette)).rejects.toEqual(TypeError('resp.json is not a function'))
+  });
+});
+
+describe('deleteProject', () => {
+	let mockResponse = 'Project 16 deleted';
+	let mockId = 16;
+	let mockProject;
+
+	beforeEach(() => {
+    mockProject = {
+    	id: 16,
+	    projectId: 55,
+	    name: 'Testing Project'
+  	};
+
+    window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockResponse)
+        })
+      })
+    })
+
+	it('should fetch correct arguments', () => {
+    const expected = [`https://color-picker-be.herokuapp.com/api/v1/projects/${mockId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }];
+
+      deleteProject(mockId);
+      expect(window.fetch).toHaveBeenCalledWith(...expected);
+  });
+
+  it('should return message that project has been deleted (Happy Path)', () => {
+    deleteProject().then(results => expect(results).toEqual(mockResponse))
+  });
+});
+
+describe('deletePalette', () => {
+	let mockResponse = 'Project 23 deleted';
+	let mockId = 23;
+	let mockPalette;
+
+	beforeEach(() => {
+    mockPalette = {
+    	id: 23,
+	    projectId: 1,
+	    name: 'test palette',
+	    color1: '#668B8B',
+	    color2: '#B4CDCD',
+	    color3: '#2F4F4F',
+	    color4: '#7A8B8B',
+	    color5: '#838B8B',
+  	};
+
+    window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockResponse)
+        })
+      })
+    })
+
+	it('should fetch correct arguments', () => {
+    const expected = [`https://color-picker-be.herokuapp.com/api/v1/palettes/${mockId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }];
+
+      deletePalette(mockId);
+      expect(window.fetch).toHaveBeenCalledWith(...expected);
+  });
+
+  it('should return message that palette has been deleted (Happy Path)', () => {
+    deletePalette().then(results => expect(results).toEqual(mockResponse))
+  });
+});
