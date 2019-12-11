@@ -109,9 +109,9 @@ describe('App component', () => {
   });
 
   it('should update state when updatePaletteName is invoked', () => {
-  	mockEvent = { target: { value: 'Name' } }
-  	wrapper.instance().updatePaletteName(mockEvent);
-  	expect(wrapper.state('paletteName')).toEqual('Name');
+  	let mockName = 'Name';
+  	wrapper.instance().updatePaletteName(mockName);
+  	expect(wrapper.state('paletteName')).toEqual(mockName);
   });
 
   it('should invoke addProject when addNewProject is called', async () => {
