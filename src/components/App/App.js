@@ -70,11 +70,12 @@ class App extends Component {
     this.setState({ paletteName: e.target.value })
   };
 
-  postPalette = () => {
+  postPalette = async () => {
     const { color1, color2, color3, color4, color5, projectId, paletteName } = this.state;
     if (color1 !== '' && color2 !== '' && color3 !== '' && color4 !== '' && color5 !== '' && projectId !== 0 && paletteName !== '') {
-      addPalette({ projectId, name: paletteName, color1, color2, color3, color4, color5 })
+      await addPalette({ projectId, name: paletteName, color1, color2, color3, color4, color5 })
     }
+    this.getPalettes();
   };
 
   addNewProject = async (name) => {
@@ -96,7 +97,6 @@ class App extends Component {
         return (<button key={project.id} value={project.projectId} onClick={(e) => this.updateProject(e)}>{project.name}</button>)
       })
     const { color1, color2, color3, color4, color5} = this.state;
-    console.log(this.state)
     return (
       <section id="app">
         <Welcome />
