@@ -23,8 +23,6 @@ export const fetchPalette = async (id) => {
 };
 
 export const addProject = async (info) => {
-  console.log("Inside api calls");
-  console.log("info:::", info)
   const options = {
     method: 'POST',
     body: JSON.stringify(info),

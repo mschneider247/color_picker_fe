@@ -20,7 +20,8 @@ class App extends Component {
       color2: '',
       color3: '',
       color4: '',
-      color5: ''
+      color5: '',
+      lockedIndex: null
     }
   }
 
@@ -59,11 +60,27 @@ class App extends Component {
   }
 
   randomizeColors = () => {
-    this.setState({ color1: '#'+(Math.random()*0xFFFFFF<<0).toString(16) });
-    this.setState({ color2: '#'+(Math.random()*0xFFFFFF<<0).toString(16) });
-    this.setState({ color3: '#'+(Math.random()*0xFFFFFF<<0).toString(16) });
-    this.setState({ color4: '#'+(Math.random()*0xFFFFFF<<0).toString(16) });
-    this.setState({ color5: '#'+(Math.random()*0xFFFFFF<<0).toString(16) });
+    const { color1, color2, color3, color4, color5, lockedIndex } = this.state;
+    const colors = [color1, color2, color3, color4, color5]
+    if (lockedIndex === null) {
+      this.setState({ color1: '#'+(Math.random()*0xFFFFFF<<0).toString(16) });
+      this.setState({ color2: '#'+(Math.random()*0xFFFFFF<<0).toString(16) });
+      this.setState({ color3: '#'+(Math.random()*0xFFFFFF<<0).toString(16) });
+      this.setState({ color4: '#'+(Math.random()*0xFFFFFF<<0).toString(16) });
+      this.setState({ color5: '#'+(Math.random()*0xFFFFFF<<0).toString(16) });
+    } else {
+      colors.forEach((color, index) => {
+        if (index !== parseInt(lockedIndex)) {
+          let selectedColor = `color${index + 1}`
+          console.log(selectedColor)
+          this.setState({[selectedColor]: '#'+(Math.random()*0xFFFFFF<<0).toString(16)})
+        }
+      })
+    }
+  }
+
+  updateLockedIndex = (index) => {
+    this.setState({ lockedIndex: index });
   }
 
   updatePaletteName = (e) => {
@@ -128,7 +145,7 @@ class App extends Component {
         <Welcome />
         <Projects projects={displayProjects} addProject={this.addNewProject}/>
         <Palettes palettes={paletteName} updatePaletteName={this.updatePaletteName} postPalette={this.postPalette}/>
-        <PaletteContainer colors={[color1, color2, color3, color4, color5]} />
+        <PaletteContainer colors={[color1, color2, color3, color4, color5]} updateLockedIndex={this.updateLockedIndex} />
         <button onClick={this.randomizeColors}>Randomize Palette</button>
       </section>
     );
