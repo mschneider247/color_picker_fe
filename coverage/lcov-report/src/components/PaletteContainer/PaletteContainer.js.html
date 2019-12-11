@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">17.65% </span>
+        <span class="strong">82.35% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>3/17</span>
+        <span class='fraction'>14/17</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">83.33% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>5/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">40% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/5</span>
+        <span class='fraction'>4/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">17.65% </span>
+        <span class="strong">82.35% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>3/17</span>
+        <span class='fraction'>14/17</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -100,19 +100,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -120,21 +110,31 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -154,35 +154,35 @@ class PaletteContainer extends Component {
     }
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  up</span>dateIndex(e) {
-<span class="cstat-no" title="statement not covered" >    if (e.target.value == parseInt(this.state.lockedIndex)) {</span>
+  updateIndex(e) {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (e.target.value == parseInt(this.state.lockedIndex)) {
 <span class="cstat-no" title="statement not covered" >      this.setState({ lockedIndex: -1 })</span>
 <span class="cstat-no" title="statement not covered" >      this.props.updateLockedIndex(-1)</span>
     } else {
-<span class="cstat-no" title="statement not covered" >      this.setState({ lockedIndex: e.target.value })</span>
-<span class="cstat-no" title="statement not covered" >      this.props.updateLockedIndex(e.target.value)</span>
+      this.setState({ lockedIndex: e.target.value })
+      this.props.updateLockedIndex(e.target.value)
     }
   }
 &nbsp;
   render() {
-    let colorBoxes = this.props.colors.map(<span class="fstat-no" title="function not covered" >(c</span>olor, index) =&gt; {
-      let isLocked= <span class="cstat-no" title="statement not covered" >false;</span>
-      let lockedClass = <span class="cstat-no" title="statement not covered" >'colorBox'</span>
-<span class="cstat-no" title="statement not covered" >      if (index === parseInt(this.state.lockedIndex)) {</span>
-<span class="cstat-no" title="statement not covered" >        isLocked = true;</span>
-<span class="cstat-no" title="statement not covered" >        lockedClass = 'locked_colorBox'</span>
+    let colorBoxes = this.props.colors.map((color, index) =&gt; {
+      let isLocked= false;
+      let lockedClass = 'colorBox'
+      if (index === parseInt(this.state.lockedIndex)) {
+        isLocked = true;
+        lockedClass = 'locked_colorBox'
       }
-      let style = <span class="cstat-no" title="statement not covered" >{</span>
+      let style = {
         backgroundColor: color
       }
-<span class="cstat-no" title="statement not covered" >      return (</span>
+      return (
         &lt;div key={index} className={lockedClass} style={style}&gt;
           &lt;button className="lock_btn" value={index} onClick={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >this.updateIndex(e)}</span>&gt;{isLocked? '🔒' : '🔓' }&lt;/button&gt;
           &lt;p className="hexCode"&gt;{color}&lt;/p&gt;
         &lt;/div&gt;
       )
     });
-<span class="cstat-no" title="statement not covered" >    return(</span>
+    return(
       &lt;section id="Section_PaletteContainer"&gt;
         {colorBoxes}
       &lt;/section&gt;
@@ -196,7 +196,7 @@ export default PaletteContainer;</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Dec 11 2019 16:28:34 GMT-0700 (Mountain Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Dec 11 2019 16:47:57 GMT-0700 (Mountain Standard Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>
