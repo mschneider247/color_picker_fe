@@ -163,7 +163,6 @@ class App extends Component {
         <Projects projects={displayProjects} addProject={this.addNewProject}/>
         <Palettes palettes={paletteName} updatePaletteName={this.updatePaletteName} postPalette={this.postPalette} randomizeColors={this.randomizeColors}/>
         <PaletteContainer colors={[color1, color2, color3, color4, color5]} updateLockedIndex={this.updateLockedIndex} />
-        {/* <button onClick={this.randomizeColors}>Randomize Palette</button> */}
       </section>
     );
   };
