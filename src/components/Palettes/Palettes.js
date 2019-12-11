@@ -5,8 +5,18 @@ class Palettes extends Component {
   constructor() {
     super();
     this.state = {
-      currentPalette: {}
+      paletteName: ''
     }
+  }
+
+  updateState = async (event) => {
+    await this.setState({ paletteName: event.target.value })
+    this.props.updatePaletteName(this.state.paletteName)
+  }
+
+  addNewPalette = () => {
+    this.props.postPalette();
+    this.setState({ paletteName: ''})
   }
 
   render () {
@@ -16,8 +26,8 @@ class Palettes extends Component {
           <div>
             <h2 id="palettes">Palettes:</h2>
             <h3>Add A New Palette:</h3>
-            <input className="input_palette" placeholder="    Palette Name" onChange={this.props.updatePaletteName} type='text'/>
-            <button className="input_palette-btn" onClick={this.props.postPalette}>+</button>
+            <input className="input_palette" value={this.state.paletteName} placeholder="    Palette Name" onChange={event => this.updateState(event)} type='text'/>
+            <button className="input_palette-btn" onClick={this.addNewPalette}>+</button>
             <br />
           </div>
           <div id="randomize_div">

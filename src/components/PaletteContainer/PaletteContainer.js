@@ -23,15 +23,18 @@ class PaletteContainer extends Component {
   render() {
     let colorBoxes = this.props.colors.map((color, index) => {
       let isLocked= false;
+      let lockedClass = 'colorBox'
       if (index === parseInt(this.state.lockedIndex)) {
         isLocked = true;
+        lockedClass = 'locked_colorBox'
       }
       let style = {
         backgroundColor: color
       }
       return (
-        <div key={index} className="colorBox" style={style}>
+        <div key={index} className={lockedClass} style={style}>
           <button className="lock_btn" value={index} onClick={(e) => this.updateIndex(e)}>{isLocked? '🔒' : '🔓' }</button>
+          <p className="hexCode">{color}</p>
         </div>
       )
     });
