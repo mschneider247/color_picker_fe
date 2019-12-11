@@ -72,7 +72,6 @@ class App extends Component {
       colors.forEach((color, index) => {
         if (index !== parseInt(lockedIndex)) {
           let selectedColor = `color${index + 1}`
-          console.log(selectedColor)
           this.setState({[selectedColor]: '#'+(Math.random()*0xFFFFFF<<0).toString(16)})
         }
       })
@@ -83,8 +82,8 @@ class App extends Component {
     this.setState({ lockedIndex: index });
   }
 
-  updatePaletteName = (e) => {
-    this.setState({ paletteName: e.target.value })
+  updatePaletteName = (name) => {
+    this.setState({ paletteName: name })
   };
 
   postPalette = async () => {
@@ -92,7 +91,13 @@ class App extends Component {
     if (color1 !== '' && color2 !== '' && color3 !== '' && color4 !== '' && color5 !== '' && projectId !== 0 && paletteName !== '') {
       await addPalette({ projectId, name: paletteName, color1, color2, color3, color4, color5 })
     }
-    this.getPalettes();
+    await this.getPalettes();
+    setTimeout(() => {
+      let newPalette = this.state.palettes.find(palette => palette.name === paletteName);
+      if (newPalette) {
+        this.setState({ paletteId: newPalette.id})
+      } 
+    }, 100);
   };
 
   addNewProject = async (name) => {
