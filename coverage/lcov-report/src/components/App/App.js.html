@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">55.84% </span>
+        <span class="strong">52.44% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>43/77</span>
+        <span class='fraction'>43/82</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">5.26% </span>
+        <span class="strong">4.76% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>1/19</span>
+        <span class='fraction'>1/21</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">55.56% </span>
+        <span class="strong">51.72% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>15/27</span>
+        <span class='fraction'>15/29</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">55.26% </span>
+        <span class="strong">52.5% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>42/76</span>
+        <span class='fraction'>42/80</span>
       </div>
     </div>
     <p class="quiet">
@@ -212,7 +212,13 @@
 <a name='L164'></a><a href='#L164'>164</a>
 <a name='L165'></a><a href='#L165'>165</a>
 <a name='L166'></a><a href='#L166'>166</a>
-<a name='L167'></a><a href='#L167'>167</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -306,6 +312,12 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">11x</span>
@@ -401,7 +413,7 @@ class App extends Component {
       color3: '',
       color4: '',
       color5: '',
-      lockedIndex: null
+      lockedIndex: -1
     }
   }
 &nbsp;
@@ -462,8 +474,8 @@ class App extends Component {
     this.setState({ lockedIndex: index });
   }
 &nbsp;
-  updatePaletteName = (e) =&gt; {
-    this.setState({ paletteName: e.target.value })
+  updatePaletteName = (name) =&gt; {
+    this.setState({ paletteName: name })
   };
 &nbsp;
   postPalette = <span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {
@@ -471,7 +483,13 @@ class App extends Component {
 <span class="cstat-no" title="statement not covered" >    if (color1 !== '' &amp;&amp; color2 !== '' &amp;&amp; color3 !== '' &amp;&amp; color4 !== '' &amp;&amp; color5 !== '' &amp;&amp; projectId !== 0 &amp;&amp; paletteName !== '') {</span>
 <span class="cstat-no" title="statement not covered" >      await addPalette({ projectId, name: paletteName, color1, color2, color3, color4, color5 })</span>
     }
-<span class="cstat-no" title="statement not covered" >    this.getPalettes();</span>
+<span class="cstat-no" title="statement not covered" >    await this.getPalettes();</span>
+<span class="cstat-no" title="statement not covered" >    setTimeout(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+      let newPalette = <span class="cstat-no" title="statement not covered" >this.state.palettes.find(<span class="fstat-no" title="function not covered" >pa</span>lette =&gt; <span class="cstat-no" title="statement not covered" >palette.name === paletteName)</span>;</span>
+<span class="cstat-no" title="statement not covered" >      if (newPalette) {</span>
+<span class="cstat-no" title="statement not covered" >        this.setState({ paletteId: newPalette.id})</span>
+      } 
+    }, 100);
   };
 &nbsp;
   addNewProject = async (name) =&gt; {
@@ -535,9 +553,9 @@ class App extends Component {
       &lt;section id="app"&gt;
         &lt;Welcome /&gt;
         &lt;Projects projects={displayProjects} addProject={this.addNewProject}/&gt;
-        &lt;Palettes palettes={paletteName} updatePaletteName={this.updatePaletteName} postPalette={this.postPalette}/&gt;
+        &lt;Palettes palettes={paletteName} updatePaletteName={this.updatePaletteName} postPalette={this.postPalette} randomizeColors={this.randomizeColors}/&gt;
         &lt;PaletteContainer colors={[color1, color2, color3, color4, color5]} updateLockedIndex={this.updateLockedIndex} /&gt;
-        &lt;button onClick={this.randomizeColors}&gt;Randomize Palette&lt;/button&gt;
+        {/* &lt;button onClick={this.randomizeColors}&gt;Randomize Palette&lt;/button&gt; */}
       &lt;/section&gt;
     );
   };
@@ -550,7 +568,7 @@ export default App;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Dec 11 2019 16:03:35 GMT-0700 (Mountain Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Dec 11 2019 16:28:34 GMT-0700 (Mountain Standard Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>
