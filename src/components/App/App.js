@@ -108,10 +108,16 @@ class App extends Component {
     const { color1, color2, color3, color4, color5} = this.state;
     const displayPalettes = this.state.palettes.filter(palette => palette.projectId === this.state.projectId)
     const paletteName = displayPalettes.map(palette => {
+      let selectedPalette = '';
+      if (palette.id === this.state.paletteId) {
+        selectedPalette = "selected_palette_box"
+      } else {
+        selectedPalette = "palette_box"
+      }
       return (
-        <div key={palette.id}>
-          <button value={palette.id} onClick={(e) => this.updatePalette(e, palette)}>{palette.name}</button>
-          <button value={palette.id} onClick={() => this.removePalette(palette.id)}>X</button>
+        <div key={palette.id} className={selectedPalette}>
+          <button className="palette_name-btn" value={palette.id} onClick={(e) => this.updatePalette(e, palette)}>{palette.name}</button>
+          <button className="palette_delete-btn" value={palette.id} onClick={() => this.removePalette(palette.id)}>X</button>
         </div>
       )
     })
