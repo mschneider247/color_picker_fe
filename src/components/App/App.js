@@ -21,7 +21,7 @@ class App extends Component {
       color3: '',
       color4: '',
       color5: '',
-      lockedIndex: null
+      lockedIndex: -1
     }
   }
 
@@ -156,9 +156,9 @@ class App extends Component {
       <section id="app">
         <Welcome />
         <Projects projects={displayProjects} addProject={this.addNewProject}/>
-        <Palettes palettes={paletteName} updatePaletteName={this.updatePaletteName} postPalette={this.postPalette}/>
+        <Palettes palettes={paletteName} updatePaletteName={this.updatePaletteName} postPalette={this.postPalette} randomizeColors={this.randomizeColors}/>
         <PaletteContainer colors={[color1, color2, color3, color4, color5]} updateLockedIndex={this.updateLockedIndex} />
-        <button onClick={this.randomizeColors}>Randomize Palette</button>
+        {/* <button onClick={this.randomizeColors}>Randomize Palette</button> */}
       </section>
     );
   };
