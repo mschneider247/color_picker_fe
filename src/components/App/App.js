@@ -72,7 +72,6 @@ class App extends Component {
       colors.forEach((color, index) => {
         if (index !== parseInt(lockedIndex)) {
           let selectedColor = `color${index + 1}`
-          console.log(selectedColor)
           this.setState({[selectedColor]: '#'+(Math.random()*0xFFFFFF<<0).toString(16)})
         }
       })
