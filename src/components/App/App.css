@@ -1,9 +1,42 @@
 #app {
   width: 100%;
-  height: 1000px;
+  height: 110%;
   padding: 5%;
   background-image: url('../../Images/FINAL_color_picker_FE.jpg');
   background-size: cover;
+}
+
+.project_box {
+  margin: 1%;
+  height: 50px;
+}
+
+.project_name-btn {
+  border: 1px solid black;
+  height: 100%;
+  font-size: 1em;
+  border-radius: 15px 0 0 15px;
+}
+
+.project_name-btn:hover {
+  background-color: grey;
+  color: white;
+  transform: scale(1.1);
+}
+
+.project_delete-btn:hover {
+  background-color: black;
+  color: red;
+  transform: scale(1.1);
+}
+
+.project_delete-btn {
+  background-color: grey;
+  color: rgb(102, 0, 0);
+  border: 1px solid black;
+  height: 100%;
+  font-size: 1em;
+  border-radius: 0 15px 15px 0;
 }
 
 h3 {
