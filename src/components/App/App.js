@@ -66,6 +66,17 @@ class App extends Component {
     this.setState({ color5: '#'+(Math.random()*0xFFFFFF<<0).toString(16) });
   }
 
+  updatePaletteName = (e) => {
+    this.setState({ paletteName: e.target.value })
+  };
+
+  postPalette = () => {
+    const { color1, color2, color3, color4, color5, projectId, paletteName } = this.state;
+    if (color1 !== '' && color2 !== '' && color3 !== '' && color4 !== '' && color5 !== '' && projectId !== 0 && paletteName !== '') {
+      addPalette({ projectId, name: paletteName, color1, color2, color3, color4, color5 })
+    }
+  };
+
   addNewProject = async (name) => {
     let projectId = 1 + this.state.projects.length
     let request = {
@@ -85,11 +96,12 @@ class App extends Component {
         return (<button key={project.id} value={project.projectId} onClick={(e) => this.updateProject(e)}>{project.name}</button>)
       })
     const { color1, color2, color3, color4, color5} = this.state;
+    console.log(this.state)
     return (
       <section id="app">
         <Welcome />
         <Projects projects={displayProjects} addProject={this.addNewProject}/>
-        <Palettes palettes={paletteName} />
+        <Palettes palettes={paletteName} updatePaletteName={this.updatePaletteName} postPalette={this.postPalette}/>
         <PaletteContainer colors={[color1, color2, color3, color4, color5]} />
         <button onClick={this.randomizeColors}>Randomize Palette</button>
       </section>
