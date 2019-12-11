@@ -12,6 +12,11 @@ describe('App component', () => {
     projectId: 1,
     name: 'BYOB',
   }];
+  let mockProject = {
+  	id: 20,
+    projectId: 1,
+    name: 'BYOB',
+  };
   let mockPalettes = [{
   	id: 5,
     projectId: 1,
@@ -34,6 +39,8 @@ describe('App component', () => {
   };
   let mockEvent = { target: { value: 10, innerText: 'Title'}};
   let mockIndex = 3;
+  let mockId = { id: 10 };
+  let mockResponse = `Project ${mockProject.id} deleted`
 
   beforeEach(() => {
     wrapper = shallow(<App/>)
@@ -47,14 +54,20 @@ describe('App component', () => {
   	return Promise.resolve(mockPalettes)
   });
 
-  it('App should match its snapshot', () => {
-    expect(wrapper).toMatchSnapshot();
+  addProject.mockImplementation(() => {
+  	return Promise.resolve(mockId)
   });
 
-  it.skip('should retrieve ideas after mounting', () => {
+  deleteProject.mockImplementation(() => {
+  	return Promise.resolve(mockResponse)
+  });
 
-    expect(wrapper.instance().getProjects()).toHaveBeenCalled();
-    expect(wrapper.instance().getPalettes()).toHaveBeenCalled();
+  deletePalette.mockImplementation(() => {
+  	return Promise.resolve(mockResponse)
+  });
+
+  it('App should match its snapshot', () => {
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('should call fetchAllProjects when getProjects is invoked', () => {
@@ -99,5 +112,18 @@ describe('App component', () => {
   	mockEvent = { target: { value: 'Name' } }
   	wrapper.instance().updatePaletteName(mockEvent);
   	expect(wrapper.state('paletteName')).toEqual('Name');
+  });
+
+  it('should invoke addProject when addNewProject is called', async () => {
+  	let mockRequest = { projectId: 2, name: 'Name' }
+  	wrapper.instance().addNewProject(mockRequest.name);
+  	await expect(addProject).toHaveBeenCalledWith(mockRequest);
+  });
+
+  it('should invoke deletePalette when removePalette is called', async () => {
+  	mockId = 4;
+  	mockResponse = `Palette ${mockId} deleted`
+  	wrapper.instance().removePalette(mockId);
+  	await expect(deletePalette).toHaveBeenCalledWith(mockId);
   });
 });
