@@ -133,8 +133,14 @@ class App extends Component {
       )
     })
     const displayProjects = this.state.projects.map(project => {
+        let selectedProject = '';
+        if (project.projectId === this.state.projectId) {
+          selectedProject = "selected_project_box"
+        } else {
+          selectedProject = "project_box"
+        }
         return (
-          <div key={project.id} className="project_box">
+          <div key={project.id} className={selectedProject}>
             <button className="project_name-btn" value={project.projectId} onClick={(e) => this.updateProject(e)}>{project.name}</button>
             <button className="project_delete-btn" value={project.projectId} onClick={() => this.deleteProjectAndPalettes(project.projectId)}>X</button>
           </div>
