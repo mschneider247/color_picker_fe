@@ -27,6 +27,10 @@
   border-radius: 0 15px 15px 0;
 }
 
+button:focus {
+  outline: none;
+}
+
 .input_name-btn:hover {
   background-color: darkolivegreen;
   color: white;

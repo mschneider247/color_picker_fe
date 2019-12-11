@@ -1,14 +1,23 @@
 #app {
   width: 100%;
-  height: 110%;
+  height: 900px;
   padding: 5%;
   background-image: url('../../Images/FINAL_color_picker_FE.jpg');
   background-size: cover;
 }
 
 .project_box {
+  outline: none;
   margin: 1%;
   height: 50px;
+}
+
+.selected_project_box {
+  outline: none;
+  margin: 1%;
+  height: 50px;
+  border-radius: 15px;
+  box-shadow: 1px 1px 1px 1px red;
 }
 
 .project_name-btn {
