@@ -4,7 +4,7 @@ import Welcome from '../Welcome/Welcome';
 import Projects from '../Projects/Projects';
 import Palettes from '../Palettes/Palettes';
 import PaletteContainer from '../PaletteContainer/PaletteContainer'
-import { fetchAllProjects, fetchAllPalettes } from '../../apiCalls';
+import { fetchAllProjects, fetchAllPalettes, addPalette } from '../../apiCalls';
 import PalettesContainer from '../PaletteContainer/PaletteContainer';
 
 class App extends Component {
@@ -60,6 +60,15 @@ class App extends Component {
     this.setState({ color5: '#'+(Math.random()*0xFFFFFF<<0).toString(16) });
   }
 
+  updatePaletteName = (e) => {
+    this.setState({ paletteName: e.target.value })
+  };
+
+  postPalette = () => {
+    const { color1, color2, color3, color4, color5, projectId, paletteName } = this.state;
+    addPalette({ projectId, name: paletteName, color1, color2, color3, color4, color5 })
+  };
+
   render() {
     const displayPalettes = this.state.palettes.filter(palette => palette.projectId === this.state.projectId)
     const paletteName = displayPalettes.map(palette => {
@@ -69,11 +78,12 @@ class App extends Component {
         return (<button key={project.id} value={project.projectId} onClick={(e) => this.updateProject(e)}>{project.name}</button>)
       })
     const { color1, color2, color3, color4, color5} = this.state;
+    console.log(this.state)
     return (
       <section id="app">
         <Welcome />
         <Projects projects={displayProjects} />
-        <Palettes palettes={paletteName} />
+        <Palettes palettes={paletteName} updatePaletteName={this.updatePaletteName} postPalette={this.postPalette}/>
         <PalettesContainer colors={[color1, color2, color3, color4, color5]} />
         <button onClick={this.randomizeColors}>Randomize Palette</button>
       </section>
