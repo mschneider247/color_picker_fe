@@ -3,6 +3,17 @@
 }
 
 .colorBox {
-  width: 15%;
-  height: 200px;
+  border-radius: 15px;
+  margin: 1%;
+  width: 13%;
+  height: 300px;
+  border: 1px solid grey;
+}
+
+.lock_btn {
+  background-color: transparent;
+  border: none;
+  font-size: 4em;
+  margin-top: 15%;
+  margin-left: 20%;
 }
