@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Palettes.css';
 
 class Palettes extends Component {
   constructor() {
@@ -11,11 +12,16 @@ class Palettes extends Component {
   render () {
     return(
       <section>
-        <h3>Add A New Palette:</h3>
-        <input onChange={this.props.updatePaletteName} type='text'/>
-        <button onClick={this.props.postPalette}>Add</button>
-        <br />
-        <div>{this.props.palettes}</div>
+        <div id="add_new_palette">
+          <h2 id="palettes">Palettes:</h2>
+          <h3>Add A New Palette:</h3>
+          <input className="input_palette" placeHolder="    Palette Name" onChange={this.props.updatePaletteName} type='text'/>
+          <button className="input_palette-btn" onClick={this.props.postPalette}>+</button>
+          <br />
+        </div>
+        <div id="palettes_div">
+          {this.props.palettes}
+        </div>
       </section>
     )
   }

@@ -1,18 +1,18 @@
 #app {
   width: 100%;
-  height: 900px;
+  height: 1200px;
   padding: 5%;
   background-image: url('../../Images/FINAL_color_picker_FE.jpg');
   background-size: cover;
 }
 
-.project_box {
+.project_box, .palette_box {
   outline: none;
   margin: 1%;
   height: 50px;
 }
 
-.selected_project_box {
+.selected_project_box, .selected_palette_box {
   outline: none;
   margin: 1%;
   height: 50px;
@@ -20,26 +20,26 @@
   box-shadow: 1px 1px 1px 1px red;
 }
 
-.project_name-btn {
+.project_name-btn, .palette_name-btn {
   border: 1px solid black;
   height: 100%;
   font-size: 1em;
   border-radius: 15px 0 0 15px;
 }
 
-.project_name-btn:hover {
+.project_name-btn:hover, .palette_name-btn:hover {
   background-color: grey;
   color: white;
   transform: scale(1.1);
 }
 
-.project_delete-btn:hover {
+.project_delete-btn:hover, .palette_delete-btn:hover {
   background-color: black;
   color: red;
   transform: scale(1.1);
 }
 
-.project_delete-btn {
+.project_delete-btn, .palette_delete-btn {
   background-color: grey;
   color: rgb(102, 0, 0);
   border: 1px solid black;
