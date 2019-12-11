@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Projects.css';
 
 class Projects extends Component {
   constructor() {
@@ -22,19 +23,23 @@ class Projects extends Component {
   render () {
     return(
       <section>
-        <h3 id="projects">Projects:</h3>
-        <h3>Add A New Project:</h3>
-        <input 
-          className="input-project"
-          type="text"
-          placeholder="Project Name"
-          name="projectName"
-          value={this.state.projectName}
-          onChange={event => this.updateState(event)}
-        />
-        <button onClick={() => this.addNewProject()}>+</button>
-        <br />
-        {this.props.projects}
+        <div id="add_new_project">
+          <h2 id="projects">Projects:</h2>
+          <h3>Add A New Project:</h3>
+          <input 
+            className="input_project"
+            type="text"
+            placeholder="    Project Name"
+            name="projectName"
+            value={this.state.projectName}
+            onChange={event => this.updateState(event)}
+          />
+          <button className="input_name-btn" onClick={() => this.addNewProject()}>+</button>
+          <br />
+        </div>
+        <div id="projects_div">
+          {this.props.projects}
+        </div>
       </section>
     )
   }

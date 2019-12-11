@@ -1,0 +1,34 @@
+#projects_div {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3%;
+  width: 75%;
+}
+
+#projects {
+  color: white;
+}
+
+#add_new_project {
+  width: 75%;
+  padding: 3%;
+}
+
+.input_project {
+  border: 1px solid black;
+  height: 40px;
+  border-radius: 15px 0 0 15px;
+}
+
+.input_name-btn {
+  border: 1px solid black;
+  width: 35px;
+  height: 43px;
+  border-radius: 0 15px 15px 0;
+}
+
+.input_name-btn:hover {
+  background-color: darkolivegreen;
+  color: white;
+  transform: scale(1.1);
+}
