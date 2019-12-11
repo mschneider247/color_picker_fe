@@ -1,7 +1,7 @@
 import React from 'react';
 import './PaletteContainer.css'
 
-const PalettesContainer = (props) => {
+const PaletteContainer = (props) => {
 
   let colorBoxes = props.colors.map((color, index) => {
     let style = {
@@ -19,4 +19,4 @@ const PalettesContainer = (props) => {
   )
 };
 
-export default PalettesContainer;
+export default PaletteContainer;

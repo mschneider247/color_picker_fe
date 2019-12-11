@@ -4,8 +4,7 @@ import Welcome from '../Welcome/Welcome';
 import Projects from '../Projects/Projects';
 import Palettes from '../Palettes/Palettes';
 import PaletteContainer from '../PaletteContainer/PaletteContainer'
-import { fetchAllProjects, fetchAllPalettes, addPalette } from '../../apiCalls';
-import PalettesContainer from '../PaletteContainer/PaletteContainer';
+import { fetchAllProjects, fetchAllPalettes, addProject, addPalette } from '../../apiCalls';
 
 class App extends Component {
   constructor() {
@@ -26,10 +25,17 @@ class App extends Component {
   }
 
   componentDidMount = () => {
+    this.getProjects();
+    this.getPalettes();
+  }
+
+  getProjects = () => {
     fetchAllProjects()
       .then(projects => this.setState({ projects }))
       .catch(error => console.log(error))
+  }
 
+  getPalettes = () => {
     fetchAllPalettes()
       .then(palettes => this.setState({ palettes }))
       .catch(error => console.log(error))
@@ -71,6 +77,16 @@ class App extends Component {
     }
   };
 
+  addNewProject = async (name) => {
+    let projectId = 1 + this.state.projects.length
+    let request = {
+      "projectId": projectId,
+      "name": name
+    }
+    await addProject(request);
+    this.getProjects();
+  }
+
   render() {
     const displayPalettes = this.state.palettes.filter(palette => palette.projectId === this.state.projectId)
     const paletteName = displayPalettes.map(palette => {
@@ -84,9 +100,9 @@ class App extends Component {
     return (
       <section id="app">
         <Welcome />
-        <Projects projects={displayProjects} />
+        <Projects projects={displayProjects} addProject={this.addNewProject}/>
         <Palettes palettes={paletteName} updatePaletteName={this.updatePaletteName} postPalette={this.postPalette}/>
-        <PalettesContainer colors={[color1, color2, color3, color4, color5]} />
+        <PaletteContainer colors={[color1, color2, color3, color4, color5]} />
         <button onClick={this.randomizeColors}>Randomize Palette</button>
       </section>
     );
