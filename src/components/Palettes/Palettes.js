@@ -15,7 +15,7 @@ class Palettes extends Component {
         <input onChange={this.props.updatePaletteName} type='text'/>
         <button onClick={this.props.postPalette}>Add</button>
         <br />
-        <p>{this.props.palettes}</p>
+        <div>{this.props.palettes}</div>
       </section>
     )
   }

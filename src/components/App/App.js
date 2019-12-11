@@ -4,7 +4,7 @@ import Welcome from '../Welcome/Welcome';
 import Projects from '../Projects/Projects';
 import Palettes from '../Palettes/Palettes';
 import PaletteContainer from '../PaletteContainer/PaletteContainer'
-import { fetchAllProjects, fetchAllPalettes, addProject, addPalette } from '../../apiCalls';
+import { fetchAllProjects, fetchAllPalettes, addProject, addPalette, deleteProject, deletePalette } from '../../apiCalls';
 
 class App extends Component {
   constructor() {
@@ -88,15 +88,41 @@ class App extends Component {
     this.getProjects();
   }
 
+  deleteProjectAndPalettes = async (projectId) => {
+    await this.state.palettes.forEach(palette => {
+      if (palette.projectId === projectId){
+        this.removePalette(palette.id)
+      }
+    })
+    await deleteProject(projectId)
+    this.getProjects();
+    this.getPalettes();
+  }
+
+  removePalette = async (id) => {
+    await deletePalette(parseInt(id))
+    this.getPalettes();
+  }
+
   render() {
+    const { color1, color2, color3, color4, color5} = this.state;
     const displayPalettes = this.state.palettes.filter(palette => palette.projectId === this.state.projectId)
     const paletteName = displayPalettes.map(palette => {
-      return (<button key={palette.id} value={palette.id} onClick={(e) => this.updatePalette(e, palette)}>{palette.name}</button>)
+      return (
+        <div key={palette.id}>
+          <button value={palette.id} onClick={(e) => this.updatePalette(e, palette)}>{palette.name}</button>
+          <button value={palette.id} onClick={() => this.removePalette(palette.id)}>X</button>
+        </div>
+      )
     })
     const displayProjects = this.state.projects.map(project => {
-        return (<button key={project.id} value={project.projectId} onClick={(e) => this.updateProject(e)}>{project.name}</button>)
+        return (
+          <div key={project.id}>
+            <button value={project.projectId} onClick={(e) => this.updateProject(e)}>{project.name}</button>
+            <button value={project.projectId} onClick={() => this.deleteProjectAndPalettes(project.projectId)}>X</button>
+          </div>
+        )
       })
-    const { color1, color2, color3, color4, color5} = this.state;
     return (
       <section id="app">
         <Welcome />
