@@ -66,7 +66,9 @@ class App extends Component {
 
   postPalette = () => {
     const { color1, color2, color3, color4, color5, projectId, paletteName } = this.state;
-    addPalette({ projectId, name: paletteName, color1, color2, color3, color4, color5 })
+    if (color1 !== '' && color2 !== '' && color3 !== '' && color4 !== '' && color5 !== '' && projectId !== 0 && paletteName !== '') {
+      addPalette({ projectId, name: paletteName, color1, color2, color3, color4, color5 })
+    }
   };
 
   render() {
