@@ -51,15 +51,17 @@ class App extends Component {
   }
 
   updatePalette = (e, palette) => {
-    this.setState({ paletteName: e.target.innerText });
-    this.setState({ paletteId: parseInt(e.target.value) });
-    this.setState({ 
-      color1: palette.color1, 
-      color2: palette.color2,
-      color3: palette.color3,
-      color4: palette.color4,
-      color5: palette.color5,
-      })
+    if (palette) {
+      this.setState({ paletteName: e.target.innerText });
+      this.setState({ paletteId: parseInt(e.target.value) });
+      this.setState({ 
+        color1: palette.color1, 
+        color2: palette.color2,
+        color3: palette.color3,
+        color4: palette.color4,
+        color5: palette.color5,
+        });
+    };
   }
 
   randomizeColors = () => {
@@ -104,7 +106,8 @@ class App extends Component {
   };
 
   addNewProject = async (name) => {
-    let projectId = 1 + this.state.projects.length
+    let sortedHighProjectId = this.state.projects.sort((a, b) => a.projectId - b.projectId).pop();
+    let projectId = sortedHighProjectId.projectId + 1;
     let request = {
       "projectId": projectId,
       "name": name
