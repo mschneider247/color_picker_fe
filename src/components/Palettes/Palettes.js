@@ -31,6 +31,8 @@ class Palettes extends Component {
             <br />
           </div>
           <div id="randomize_div">
+            <p>Select between Palettes or</p>
+            <p>randomly generate new colors!</p>
             <button id="random_btn" onClick={this.props.randomizeColors}>Randomize Palette</button>
           </div>
         </div>

@@ -24,18 +24,24 @@ class Projects extends Component {
     return(
       <section>
         <div id="add_new_project">
-          <h2 id="projects">Projects:</h2>
-          <h3>Add A New Project:</h3>
-          <input 
-            className="input_project"
-            type="text"
-            placeholder="    Project Name"
-            name="projectName"
-            value={this.state.projectName}
-            onChange={event => this.updateState(event)}
-          />
-          <button className="input_name-btn" onClick={() => this.addNewProject()}>+</button>
-          <br />
+          <div>
+            <h2 id="projects">Projects:</h2>
+            <h3>Add A New Project:</h3>
+            <input 
+              className="input_project"
+              type="text"
+              placeholder="    Project Name"
+              name="projectName"
+              value={this.state.projectName}
+              onChange={event => this.updateState(event)}
+            />
+            <button className="input_name-btn" onClick={() => this.addNewProject()}>+</button>
+            <br />
+          </div>
+          <div id="instructions_div">
+            <p>Pick a project below,</p>
+            <p>or create a new one!</p>
+          </div>
         </div>
         <div id="projects_div">
           {this.props.projects}
