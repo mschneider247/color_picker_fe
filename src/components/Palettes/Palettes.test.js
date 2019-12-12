@@ -12,7 +12,7 @@ describe('Palettes component', () => {
     wrapper = shallow(<Palettes updatePaletteName={mockUpdatePaletteName} postPalette={mockPostPalette} />)
   });
 
-  it('App should match its snapshot', () => {
+  it('Palettes should match its snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 

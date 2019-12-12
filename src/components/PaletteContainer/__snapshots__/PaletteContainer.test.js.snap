@@ -1,3 +1,108 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PaletteContainer component App should match its snapshot 1`] = `ShallowWrapper {}`;
+exports[`PaletteContainer component PalettesContainer should match its snapshot 1`] = `
+<section
+  id="Section_PaletteContainer"
+>
+  <div
+    className="colorBox"
+    key="0"
+    style={
+      Object {
+        "backgroundColor": "",
+      }
+    }
+  >
+    <button
+      className="lock_btn"
+      onClick={[Function]}
+      value={0}
+    >
+      🔓
+    </button>
+    <p
+      className="hexCode"
+    />
+  </div>
+  <div
+    className="colorBox"
+    key="1"
+    style={
+      Object {
+        "backgroundColor": "",
+      }
+    }
+  >
+    <button
+      className="lock_btn"
+      onClick={[Function]}
+      value={1}
+    >
+      🔓
+    </button>
+    <p
+      className="hexCode"
+    />
+  </div>
+  <div
+    className="colorBox"
+    key="2"
+    style={
+      Object {
+        "backgroundColor": "",
+      }
+    }
+  >
+    <button
+      className="lock_btn"
+      onClick={[Function]}
+      value={2}
+    >
+      🔓
+    </button>
+    <p
+      className="hexCode"
+    />
+  </div>
+  <div
+    className="colorBox"
+    key="3"
+    style={
+      Object {
+        "backgroundColor": "",
+      }
+    }
+  >
+    <button
+      className="lock_btn"
+      onClick={[Function]}
+      value={3}
+    >
+      🔓
+    </button>
+    <p
+      className="hexCode"
+    />
+  </div>
+  <div
+    className="colorBox"
+    key="4"
+    style={
+      Object {
+        "backgroundColor": "",
+      }
+    }
+  >
+    <button
+      className="lock_btn"
+      onClick={[Function]}
+      value={4}
+    >
+      🔓
+    </button>
+    <p
+      className="hexCode"
+    />
+  </div>
+</section>
+`;

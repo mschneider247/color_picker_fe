@@ -1,3 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App component App should match its snapshot 1`] = `ShallowWrapper {}`;
+exports[`App component App should match its snapshot 1`] = `
+<section
+  id="app"
+>
+  <Welcome />
+  <Projects
+    addProject={[Function]}
+    projects={
+      Array [
+        <div
+          className="project_box"
+        >
+          <button
+            className="project_name-btn"
+            onClick={[Function]}
+            value={1}
+          >
+            BYOB
+          </button>
+          <button
+            className="project_delete-btn"
+            onClick={[Function]}
+            value={1}
+          >
+            X
+          </button>
+        </div>,
+      ]
+    }
+  />
+  <Palettes
+    palettes={Array []}
+    postPalette={[Function]}
+    randomizeColors={[Function]}
+    updatePaletteName={[Function]}
+  />
+  <PaletteContainer
+    colors={
+      Array [
+        "",
+        "",
+        "",
+        "",
+        "",
+      ]
+    }
+    updateLockedIndex={[Function]}
+  />
+</section>
+`;

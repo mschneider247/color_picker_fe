@@ -1,3 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Palettes component App should match its snapshot 1`] = `ShallowWrapper {}`;
+exports[`Palettes component Palettes should match its snapshot 1`] = `
+<section>
+  <div
+    id="add_new_palette"
+  >
+    <div>
+      <h2
+        id="palettes"
+      >
+        Palettes:
+      </h2>
+      <h3>
+        Add A New Palette:
+      </h3>
+      <input
+        className="input_palette"
+        onChange={[Function]}
+        placeholder="    Palette Name"
+        type="text"
+        value=""
+      />
+      <button
+        className="input_palette-btn"
+        onClick={[Function]}
+      >
+        +
+      </button>
+      <br />
+    </div>
+    <div
+      id="randomize_div"
+    >
+      <button
+        id="random_btn"
+      >
+        Randomize Palette
+      </button>
+    </div>
+  </div>
+  <div
+    id="palettes_div"
+  />
+</section>
+`;
