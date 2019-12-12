@@ -10,7 +10,7 @@ class PaletteContainer extends Component {
   }
 
   updateIndex(e) {
-    if (e.target.value === parseInt(this.state.lockedIndex)) {
+    if (parseInt(e.target.value) === parseInt(this.state.lockedIndex)) {
       this.setState({ lockedIndex: -1 })
       this.props.updateLockedIndex(-1)
     } else {
