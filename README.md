@@ -18,8 +18,8 @@ This application utilizes: create-react-app, react, enzyme & jest, html, css, fe
 - Enjoy picking colors!
 
 ### ScreenShots:
-![screenshot1]()
-![screenshot3]()
+![screenshot1](./src/images/ss1.png)
+![screenshot3](./src/images/ss2.png)
 
 ### Testing ScreenShots:
 ![testing]()
