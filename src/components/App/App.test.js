@@ -43,7 +43,7 @@ describe('App component', () => {
   let mockResponse = `Project ${mockProject.id} deleted`
 
   beforeEach(() => {
-    wrapper = shallow(<App/>)
+    wrapper = shallow(<App />)
   });
 
   fetchAllProjects.mockImplementation(() => {
@@ -88,12 +88,6 @@ describe('App component', () => {
   it('should update state when getPalettes is invoked', () => {
   	wrapper.instance().getPalettes();
   	expect(wrapper.state('palettes')).toEqual(mockPalettes);
-  });
-
-  it('should update state when updateProject is invoked', () => {
-  	wrapper.instance().updateProject(mockEvent);
-  	expect(wrapper.state('projectName')).toEqual('Title');
-  	expect(wrapper.state('projectId')).toEqual(10);
   });
 
   it('should update state when updatePalette is invoked', () => {
