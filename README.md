@@ -21,8 +21,8 @@ This application utilizes: create-react-app, react, enzyme & jest, html, css, fe
 [Project](https://github.com/mschneider247/color_picker_fe/projects/1)
 
 ### ScreenShots:
-![screenshot1]()
-![screenshot3]()
+![screenshot1](./src/images/ss1.png)
+![screenshot3](./src/images/ss2.png)
 
 ### Testing ScreenShots:
 ![testing](https://github.com/mschneider247/color_picker_fe/blob/master/Screen%20Shot%202019-12-11%20at%206.14.16%20PM.png)
