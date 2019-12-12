@@ -45,6 +45,7 @@ class App extends Component {
   updateProject = (e) => {
     this.setState({ projectName: e.target.innerText });
     this.setState({ projectId: parseInt(e.target.value) });
+    console.log("UpdateProject is being called")
   }
 
   updatePalette = (e, palette) => {
@@ -126,9 +127,7 @@ class App extends Component {
     this.getPalettes();
   }
 
-  render() {
-    const { color1, color2, color3, color4, color5} = this.state;
-    const displayPalettes = this.state.palettes.filter(palette => palette.projectId === this.state.projectId)
+  buildPaletteCard = (displayPalettes) => {
     const paletteName = displayPalettes.map(palette => {
       let selectedPalette = '';
       if (palette.id === this.state.paletteId) {
@@ -143,25 +142,37 @@ class App extends Component {
         </div>
       )
     })
-    const displayProjects = this.state.projects.map(project => {
-        let selectedProject = '';
-        if (project.projectId === this.state.projectId) {
-          selectedProject = "selected_project_box"
-        } else {
-          selectedProject = "project_box"
-        }
-        return (
-          <div key={project.id} className={selectedProject}>
-            <button className="project_name-btn" value={project.projectId} onClick={(e) => this.updateProject(e)}>{project.name}</button>
-            <button className="project_delete-btn" value={project.projectId} onClick={() => this.deleteProjectAndPalettes(project.projectId)}>X</button>
-          </div>
-        )
-      })
+    return paletteName;
+  };
+
+  buildProjectCard = (projects) => {
+    let builtProjects = projects.map(project => {
+      let selectedProject = '';
+      if (project.projectId === this.state.projectId) {
+        selectedProject = "selected_project_box"
+      } else {
+        selectedProject = "project_box"
+      };
+      return (
+        <div key={project.id} className={selectedProject}>
+          <button className="project_name-btn" value={project.projectId} onClick={(e) => this.updateProject(e)}>{project.name}</button>
+          <button className="project_delete-btn" value={project.projectId} onClick={() =>  this.deleteProjectAndPalettes(project.projectId)}>X</button>
+        </div>
+      );
+    });
+    return builtProjects;
+  }
+
+  render() {
+    const { color1, color2, color3, color4, color5} = this.state;
+    const displayPalettes = this.state.palettes.filter(palette => palette.projectId === this.state.projectId)
+    const showPalettes = this.buildPaletteCard(displayPalettes);
+    const showProjects = this.buildProjectCard(this.state.projects);
     return (
       <section id="app">
         <Welcome />
-        <Projects projects={displayProjects} addProject={this.addNewProject}/>
-        <Palettes palettes={paletteName} updatePaletteName={this.updatePaletteName} postPalette={this.postPalette} randomizeColors={this.randomizeColors}/>
+        <Projects projects={showProjects} addProject={this.addNewProject}/>
+        <Palettes palettes={showPalettes} updatePaletteName={this.updatePaletteName} postPalette={this.postPalette} randomizeColors={this.randomizeColors}/>
         <PaletteContainer colors={[color1, color2, color3, color4, color5]} updateLockedIndex={this.updateLockedIndex} />
         {/* <button onClick={this.randomizeColors}>Randomize Palette</button> */}
       </section>
