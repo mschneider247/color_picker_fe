@@ -45,7 +45,9 @@ class App extends Component {
   updateProject = (e) => {
     this.setState({ projectName: e.target.innerText });
     this.setState({ projectId: parseInt(e.target.value) });
-    console.log("UpdateProject is being called")
+    let currentProjectId = parseInt(e.target.value);
+    let currentPalette = this.state.palettes.find(palette => palette.projectId === currentProjectId)
+    this.updatePalette(e, currentPalette);
   }
 
   updatePalette = (e, palette) => {
@@ -127,7 +129,7 @@ class App extends Component {
     this.getPalettes();
   }
 
-  buildPaletteCard = (displayPalettes) => {
+  buildPaletteCards = (displayPalettes) => {
     const paletteName = displayPalettes.map(palette => {
       let selectedPalette = '';
       if (palette.id === this.state.paletteId) {
@@ -145,7 +147,7 @@ class App extends Component {
     return paletteName;
   };
 
-  buildProjectCard = (projects) => {
+  buildProjectCards = (projects) => {
     let builtProjects = projects.map(project => {
       let selectedProject = '';
       if (project.projectId === this.state.projectId) {
@@ -166,15 +168,14 @@ class App extends Component {
   render() {
     const { color1, color2, color3, color4, color5} = this.state;
     const displayPalettes = this.state.palettes.filter(palette => palette.projectId === this.state.projectId)
-    const showPalettes = this.buildPaletteCard(displayPalettes);
-    const showProjects = this.buildProjectCard(this.state.projects);
+    const showPalettes = this.buildPaletteCards(displayPalettes);
+    const showProjects = this.buildProjectCards(this.state.projects);
     return (
       <section id="app">
         <Welcome />
         <Projects projects={showProjects} addProject={this.addNewProject}/>
         <Palettes palettes={showPalettes} updatePaletteName={this.updatePaletteName} postPalette={this.postPalette} randomizeColors={this.randomizeColors}/>
         <PaletteContainer colors={[color1, color2, color3, color4, color5]} updateLockedIndex={this.updateLockedIndex} />
-        {/* <button onClick={this.randomizeColors}>Randomize Palette</button> */}
       </section>
     );
   };
