@@ -47,7 +47,15 @@ class App extends Component {
     this.setState({ projectId: parseInt(e.target.value) });
     let currentProjectId = parseInt(e.target.value);
     let currentPalette = this.state.palettes.find(palette => palette.projectId === currentProjectId)
-    this.updatePalette(e, currentPalette);
+    if (currentPalette) {
+      let passEvent = {
+        target: {
+          innerText: currentPalette.name,
+          value: currentPalette.id
+        }
+      }
+      this.updatePalette(passEvent, currentPalette);
+    }
   }
 
   updatePalette = (e, palette) => {
