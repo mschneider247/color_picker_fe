@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Projects component Projects should match its snapshot 1`] = `
+<section>
+  <div
+    id="add_new_project"
+  >
+    <h2
+      id="projects"
+    >
+      Projects:
+    </h2>
+    <h3>
+      Add A New Project:
+    </h3>
+    <input
+      className="input_project"
+      name="projectName"
+      onChange={[Function]}
+      placeholder="    Project Name"
+      type="text"
+      value=""
+    />
+    <button
+      className="input_name-btn"
+      onClick={[Function]}
+    >
+      +
+    </button>
+    <br />
+  </div>
+  <div
+    id="projects_div"
+  />
+</section>
+`;

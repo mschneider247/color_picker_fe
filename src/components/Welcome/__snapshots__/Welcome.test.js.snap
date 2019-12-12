@@ -1,3 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Welcome component Welcome should match its snapshot 1`] = `ShallowWrapper {}`;
+exports[`Welcome component Welcome should match its snapshot 1`] = `
+<section
+  id="welcome"
+>
+  <h2
+    id="welcomeTitle"
+  >
+    Welcome to Color_Picker!
+  </h2>
+</section>
+`;

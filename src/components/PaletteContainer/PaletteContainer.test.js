@@ -11,7 +11,7 @@ describe('PaletteContainer component', () => {
     wrapper = shallow(<PaletteContainer  updateLockedIndex={mockUpdateLockedIndex} colors={['','','','','']}/>)
   });
 
-  it('App should match its snapshot', () => {
+  it('PalettesContainer should match its snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
