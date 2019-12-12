@@ -17,6 +17,9 @@ This application utilizes: create-react-app, react, enzyme & jest, html, css, fe
 - Once cloned, run npm install and npm start in your terminal. In your browser visit localhost: 3000.  
 - Enjoy picking colors!
 
+### Story Board
+[Project](https://github.com/mschneider247/color_picker_fe/projects/1)
+
 ### ScreenShots:
 ![screenshot1]()
 ![screenshot3]()
