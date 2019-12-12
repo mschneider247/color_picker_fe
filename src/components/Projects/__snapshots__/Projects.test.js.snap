@@ -5,29 +5,41 @@ exports[`Projects component Projects should match its snapshot 1`] = `
   <div
     id="add_new_project"
   >
-    <h2
-      id="projects"
+    <div>
+      <h2
+        id="projects"
+      >
+        Projects:
+      </h2>
+      <h3>
+        Add A New Project:
+      </h3>
+      <input
+        className="input_project"
+        name="projectName"
+        onChange={[Function]}
+        placeholder="    Project Name"
+        type="text"
+        value=""
+      />
+      <button
+        className="input_name-btn"
+        onClick={[Function]}
+      >
+        +
+      </button>
+      <br />
+    </div>
+    <div
+      id="instructions_div"
     >
-      Projects:
-    </h2>
-    <h3>
-      Add A New Project:
-    </h3>
-    <input
-      className="input_project"
-      name="projectName"
-      onChange={[Function]}
-      placeholder="    Project Name"
-      type="text"
-      value=""
-    />
-    <button
-      className="input_name-btn"
-      onClick={[Function]}
-    >
-      +
-    </button>
-    <br />
+      <p>
+        Pick a project below,
+      </p>
+      <p>
+        or create a new one!
+      </p>
+    </div>
   </div>
   <div
     id="projects_div"

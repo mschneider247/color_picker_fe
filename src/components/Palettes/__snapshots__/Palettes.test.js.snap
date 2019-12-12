@@ -32,6 +32,12 @@ exports[`Palettes component Palettes should match its snapshot 1`] = `
     <div
       id="randomize_div"
     >
+      <p>
+        Select between Palettes or
+      </p>
+      <p>
+        randomly generate new colors!
+      </p>
       <button
         id="random_btn"
       >
