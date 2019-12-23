@@ -4,7 +4,8 @@
 [Samuel Coleman](https://github.com/SamuelColeman)
 
 ### Summary:
-[live site](https://colorpicker-fe.herokuapp.com/)
+[live site](https://colorpicker-fe.herokuapp.com/)</br>
+[Back-End repository](https://github.com/SamuelColeman/color_picker_be)
 <br />
 Create projects and add color palettes to them.  Use this site to quickly come up with new color ideas.  Projects and Palettes are saved between sessions, so that you can come back and reference your color ideas.
 
